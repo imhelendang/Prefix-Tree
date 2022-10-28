@@ -1,0 +1,13 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww18580\viewh23700\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 1. To determine whether a string in a given collection of strings is a prefix of one another is using trie (or prefix tree) as it helps to optimal search time complexity to O(n), n is combined total length of strings.\
+\
+2. First, the program displays all strings in the array to give a visual illustration of what the result should be with a single for loop. Then to create a trie which carries an array of struct (link) size of the alphabet and a boolean character (is_word that acts as \'91$\'92 - mark true when it\'92s in the leaf node), first dynamically allocate the root. Now before adding a new node to the trie, the program will check if the picked string is prefix of the following string using rfind(), a built in function in C++. The program need to pass the current string along with position (0 - the beginning of the string) to check whether the next string starts with it. That is prefix. If the function returns 0, add to the trie (prefix tree). Then, the add() function finds the correct index (i) in the array to store the new node. Note here, as the program uses array size of the alphabet, \'93i\'94 will represent the character, i.e. 1 represents a, 2 represents b and so on. That also means the program won\'92t store the character but, instead, label the edge with the index \'93i.\'94 When a string is added, mark \'93is_word\'94 true then move on to the following string. This process repeats when it successfully creates the tree for all the prefixes by using a for loop. While still inside the loop, print out the string that is prefix of the others.\
+After that, delete_trie() function will delete all dynamically allocated nodes before terminating the program. By using recursive method, the program traverses through the nodes, where they are not equal to NULL (not empty), to deallocate the memory.\
+\
+3. The searching rfind() function likely spends O(1) time complexity each comparison to check if the string is prefix. Meanwhile, the insertion in a trie costs O(n), again n is combined total length of strings, run time complexity to add all prefix strings. Lastly, each character of the string is inserted as a single node in an array size of the alphabet; therefore, space complexity would be O(26*n) as the program trade space for faster run time. }
